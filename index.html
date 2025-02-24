@@ -19,7 +19,9 @@
    
     <form class="card col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-5">
     <div class="card-body">
-        <i id="localTemp" class="bi bi-thermometer-medium" style="font-size: 2rem;">...</i>
+        <i id="localTemp" class="bi bi-thermometer-half" style="font-size: 2rem;">...</i>
+        <i id="localHumid" class="bi bi-percent" style="font-size: 2rem;">...</i>
+
         <i id="weatherIcon" class="bi bi-cloud-sun" style="font-size: 2rem;">...</i>
 
 
@@ -99,14 +101,18 @@
         //function gets weather data with given location 
         function getWeather(latitude,longitude){        
             //fetch minutely_15
-            return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&current=weather_code&temperature_unit=fahrenheit`)
+            return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=relative_humidity_2m&current=temperature_2m&current=weather_code&temperature_unit=fahrenheit`)
             .then(response => response.json()) //turn response into json
             .then(data => {
                 //get data from json
                 let temp = data.current.temperature_2m
                 let weatherCode = data.current.weather_code
+                let humidity = data.current.relative_humidity_2m
                 //temperature update
                 document.getElementById('localTemp').textContent = `${temp}°`
+                
+                //update humididty
+                document.getElementById('localHumidity').textContent = `${humidity}°`
 
                 //conditions update
                 document.getElementById('weatherIcon').textContent = `${weather_code_index[weatherCode]}`
