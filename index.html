@@ -102,7 +102,7 @@
 
         function getTempIcon(temperature){
             let index = 0
-            let temp = parseFloat(temperature)
+            let temp = parseInt(temperature)
             if(temp < 32){
                 index= 1
             }  ///cold icon
@@ -112,7 +112,7 @@
             else if(temp > 70){
                 index=  3
             }    //hot icon
-            console.log(index)
+            console.log(index,temp)
             return index
         }
 
