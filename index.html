@@ -122,8 +122,8 @@
             
 
                 //get data from json
-                let temp = data.minutely_15.temperature_2m
-                let weatherCode = data.minutely_15.weather_code
+                let temp = data.current.temperature_2m
+                let weatherCode = data.current.weather_code
 
                 //temperature update
                 document.getElementById('localTemp').textContent = `${temp}°`
