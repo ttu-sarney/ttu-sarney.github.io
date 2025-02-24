@@ -102,9 +102,9 @@
 
         function getTempIcon(temperature){
             let index = 0
-            if(temperature < 32){index= 1}
-            if(temperature < 50 && temperature > 32){index= 2}
-            if(temperature > 70){index=  3}
+            if(temperature < 32){index= 1}  ///cold icon
+            else if(temperature < 50&& temperature > 32){index= 2} //medium icon
+            else if(temperature > 70){index=  3}    //hot icon
             return index
         }
 
