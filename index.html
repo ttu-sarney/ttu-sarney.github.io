@@ -102,11 +102,10 @@
 
         function getTempIcon(temperature){
             console.log(temperature)
-            let index = 0
+            let index = 2
             if(temperature < 32){index= 1}
             if(temperature < 50){index= 2}
             if(temperature > 70){index=  3}
-            console.log(index)
             return index
         }
 
@@ -121,7 +120,7 @@
                 let weatherCode = data.current.weather_code
                 let iconIndex = getTempIcon(temp)
                 //temperature update
-                document.getElementById('localTemp').textContent = `${temp}°`
+                document.getElementById('localTemp').textContent = `${parseInt(temp)}°`
                 document.getElementById('localTemp').className = `bi ${temperature_icons[iconIndex]}`
 
                 //conditions update
