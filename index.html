@@ -108,7 +108,7 @@
         //function gets weather data with given location 
         function getWeather(latitude,longitude){        
             //fetch minutely_15
-            return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&minutely_15=temperature_2m&minutely_15=weather_code&temperature_unit=fahrenheit`)
+            return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m&current=weather_code&temperature_unit=fahrenheit`)
             .then(response => response.json()) //turn response into json
             .then(data => {
                 //current hour and minute required to find current weather
@@ -122,8 +122,8 @@
             
 
                 //get data from json
-                let temp = data.minutely_15.temperature_2m[Current_interval]
-                let weatherCode = data.minutely_15.weather_code[Current_interval]
+                let temp = data.minutely_15.temperature_2m
+                let weatherCode = data.minutely_15.weather_code
 
                 //temperature update
                 document.getElementById('localTemp').textContent = `${temp}°`
