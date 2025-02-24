@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-7">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
@@ -94,28 +94,6 @@
             99: "bi-cloud-lightning"
         }
 
-        const temperature_icons = {
-            1: "bi-thermometer-snow",
-            2: "bi-thermometer-half",
-            3: "bi-thermometer-high"
-        }
-
-        function getTempIcon(temperature){
-            let index = 0
-            let temp = parseInt(temperature)
-            if(temp < 32){
-                index= 1
-            }  ///cold icon
-            else if(temp < 50 && temp > 32){
-                index= 2
-            } //medium icon
-            else if(temp > 70){
-                index=  3
-            }    //hot icon
-            console.log(index,temp)
-            return index
-        }
-
         //function gets weather data with given location 
         function getWeather(latitude,longitude){        
             //fetch minutely_15
@@ -125,10 +103,8 @@
                 //get data from json
                 let temp = data.current.temperature_2m
                 let weatherCode = data.current.weather_code
-                let iconIndex = getTempIcon(temp)
                 //temperature update
                 document.getElementById('localTemp').textContent = `${temp}°`
-                document.getElementById('localTemp').className = `bi ${temperature_icons[iconIndex]}`
 
                 //conditions update
                 document.getElementById('weatherIcon').textContent = `${weather_code_index[weatherCode]}`
